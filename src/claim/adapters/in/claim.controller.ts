@@ -1,4 +1,5 @@
-import { Controller, Post, Body, Inject } from '@nestjs/common';
+import { Controller, Post, Body, Inject, UseGuards } from '@nestjs/common';
+import { PartneryKeyGuard } from 'src/guards/partner-key-guard';
 
 import {
   ClaimServicePort,
@@ -6,6 +7,7 @@ import {
 } from 'src/claim/domain/ports/in/claim.service.port';
 
 @Controller('claims')
+@UseGuards(PartneryKeyGuard)
 export class ClaimController {
   constructor(
     @Inject('ClaimServicePort') private readonly claimService: ClaimServicePort,

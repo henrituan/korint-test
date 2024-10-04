@@ -1,4 +1,13 @@
-import { Controller, Post, Get, Body, Param, Inject } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  Param,
+  Inject,
+  UseGuards,
+} from '@nestjs/common';
+import { PartneryKeyGuard } from 'src/guards/partner-key-guard';
 
 import {
   CustomerDTO,
@@ -6,6 +15,7 @@ import {
 } from 'src/customer/domain/ports/in/customer.service.port';
 
 @Controller('customers')
+@UseGuards(PartneryKeyGuard)
 export class CustomerController {
   constructor(
     @Inject('CustomerServicePort')
