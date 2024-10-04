@@ -13,7 +13,7 @@ services:
       - DATABASE_PORT=3000
       - DATABASE_USER=postgres
       - DATABASE_PASSWORD=postgres
-      - DATABASE_NAME=nestjs
+      - DATABASE_NAME=korint
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -27,7 +27,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=nestjs
+      - POSTGRES_DB=korint
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
