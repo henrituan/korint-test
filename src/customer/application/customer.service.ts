@@ -1,7 +1,7 @@
 import { uuid } from 'uuidv4';
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 
-import { ClaimService } from 'src/claim/application/claim.service';
+import { ClaimServicePort } from 'src/claim/domain/ports/in/claim.service.port';
 
 import { Customer } from '../domain/customer.model';
 import { CustomerServicePort } from '../domain/ports/in/customer.service.port';
@@ -10,8 +10,9 @@ import { CustomerRepositoryPort } from '../domain/ports/out/customer.repository.
 @Injectable()
 export class CustomerService implements CustomerServicePort {
   constructor(
+    @Inject('CustomerRepositoryPort')
     private readonly customerRepository: CustomerRepositoryPort,
-    private readonly claimService: ClaimService,
+    @Inject('ClaimServicePort') private readonly claimService: ClaimServicePort,
   ) {}
 
   async createCustomer(

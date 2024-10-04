@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Inject } from '@nestjs/common';
 
 import {
   ClaimServicePort,
@@ -7,7 +7,9 @@ import {
 
 @Controller('claims')
 export class ClaimController {
-  constructor(private readonly claimService: ClaimServicePort) {}
+  constructor(
+    @Inject('ClaimServicePort') private readonly claimService: ClaimServicePort,
+  ) {}
 
   @Post()
   async createClaims(

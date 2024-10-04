@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, Param } from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, Inject } from '@nestjs/common';
 
 import {
   CustomerDTO,
@@ -7,7 +7,10 @@ import {
 
 @Controller('customers')
 export class CustomerController {
-  constructor(private readonly customerService: CustomerServicePort) {}
+  constructor(
+    @Inject('CustomerServicePort')
+    private readonly customerService: CustomerServicePort,
+  ) {}
 
   @Post()
   async createCustomer(@Body() data: { input: CustomerDTO }) {

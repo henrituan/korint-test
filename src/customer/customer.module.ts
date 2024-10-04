@@ -1,13 +1,25 @@
 import { Module } from '@nestjs/common';
+
+import { ClaimModule } from 'src/claim/claim.module';
+import { PrismaModule } from 'src/infra/database/prisma.module';
+
 import { CustomerController } from './adapters/in/customer.controller';
-import { PrismaService } from 'src/infra/database/prisma.service';
 import { CustomerService } from './application/customer.service';
 import { CustomerRepository } from './adapters/out/customer.repository';
-import { ClaimModule } from 'src/claim/claim.module';
 
 @Module({
+  imports: [ClaimModule, PrismaModule],
+  providers: [
+    {
+      provide: 'CustomerServicePort',
+      useClass: CustomerService,
+    },
+    {
+      provide: 'CustomerRepositoryPort',
+      useClass: CustomerRepository,
+    },
+  ],
   controllers: [CustomerController],
-  providers: [PrismaService, CustomerService, CustomerRepository, ClaimModule],
-  exports: [CustomerController, CustomerService],
+  exports: ['CustomerServicePort'],
 })
 export class CustomerModule {}
