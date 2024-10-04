@@ -9,11 +9,7 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=development
-      - DATABASE_HOST=postgres
-      - DATABASE_PORT=3000
-      - DATABASE_USER=postgres
-      - DATABASE_PASSWORD=postgres
-      - DATABASE_NAME=korint
+      - DATABASE_URL=postgresql://postgres:postgres@localhost:5000/korint?schema=public
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
