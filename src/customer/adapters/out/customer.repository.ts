@@ -28,12 +28,23 @@ export class CustomerRepository implements CustomerRepositoryPort {
   async findById(id: string): Promise<Customer | null> {
     const customer = await this.prisma.customer.findUnique({
       where: { id },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        claims: true,
+      },
     });
 
     if (!customer) {
       return null;
     }
 
-    return new Customer(customer.id, customer.email, customer.name);
+    return new Customer(
+      customer.id,
+      customer.email,
+      customer.name,
+      customer.claims,
+    );
   }
 }
