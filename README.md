@@ -5,7 +5,7 @@ https://www.loom.com/share/fb3ae38deddc4049b1670cc6b851ba5b
 - POST /customers
 - GET /customers/:id
 - POST /claims (batch claims creation)
-- Simple Auth
+- Simple Auth via API key
 
 ## .Env
 ```bash
