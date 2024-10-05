@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@infra/database/prisma.service';
 
 import { Claim } from '@claim/domain/claim.model';
-import { ClaimRepositoryPort } from '@claim/domain/ports/out/Claim.repository.port';
+import { ClaimRepositoryPort } from '@claim/domain/ports/out/claim.repository.port';
 import { Customer } from '@customer/domain/customer.model';
 
 @Injectable()

@@ -2,7 +2,7 @@ import { Controller, Post, Body, Inject, UseGuards } from '@nestjs/common';
 import { PartneryKeyGuard } from '@guards/partner-key-guard';
 
 import {
-  @guardsPort,
+  ClaimServicePort,
   ClaimDTO,
 } from '@claim/domain/ports/in/claim.service.port';
 
@@ -10,7 +10,7 @@ import {
 @UseGuards(PartneryKeyGuard)
 export class ClaimController {
   constructor(
-    @Inject('@guardsPort') private readonly @guards: @guardsPort,
+    @Inject('ClaimServicePort') private readonly claimService: ClaimServicePort,
   ) {}
 
   @Post()
@@ -20,6 +20,6 @@ export class ClaimController {
       input: ClaimDTO[];
     },
   ) {
-    return await this.@guards.createClaims(data.input);
+    return await this.claimService.createClaims(data.input);
   }
 }

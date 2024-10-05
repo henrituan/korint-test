@@ -6,11 +6,11 @@ import { ClaimRepositoryPort } from '@claim/domain/ports/out/claim.repository.po
 import { Claim } from '../domain/claim.model';
 import {
   ClaimDTO,
-  @guardsPort,
+  ClaimServicePort,
 } from '../domain/ports/in/claim.service.port';
 
 @Injectable()
-export class @guards implements @guardsPort {
+export class ClaimService implements ClaimServicePort {
   constructor(
     @Inject('ClaimRepositoryPort')
     private readonly claimRepository: ClaimRepositoryPort,

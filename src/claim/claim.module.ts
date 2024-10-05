@@ -4,14 +4,14 @@ import { PrismaModule } from '@infra/database/prisma.module';
 
 import { ClaimRepository } from './adapters/out/claim.repository';
 import { ClaimController } from './adapters/in/claim.controller';
-import { @guards } from './application/claim.service';
+import { ClaimService } from './application/claim.service';
 
 @Module({
   controllers: [ClaimController],
   providers: [
     {
-      provide: '@guardsPort',
-      useClass: @guards,
+      provide: 'ClaimServicePort',
+      useClass: ClaimService,
     },
     {
       provide: 'ClaimRepositoryPort',
@@ -19,6 +19,6 @@ import { @guards } from './application/claim.service';
     },
   ],
   imports: [PrismaModule],
-  exports: ['@guardsPort'],
+  exports: ['ClaimServicePort'],
 })
 export class ClaimModule {}
