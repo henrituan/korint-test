@@ -9,10 +9,11 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=development
-      - DATABASE_URL=postgresql://postgres:postgres@localhost:5000/korint?schema=public
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/korint?schema=public
+      - PRISMA_CLI_BINARY_TARGETS="linux-arm64-openssl-3.0.x"
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./node_modules:/usr/src/app/node_modules
     depends_on:
       - postgres
 
