@@ -28,13 +28,15 @@ Postgres DB is available at port 5000
 ```bash
 # unit tests
 $ npm run test
+```
 <img width="466" alt="image" src="https://github.com/user-attachments/assets/0a76ca73-944e-47a5-b2c7-f4a48ab8c15f">
 
+```bash
 # e2e tests
 $ npm run test:e2e
+```
 <img width="409" alt="image" src="https://github.com/user-attachments/assets/323cdc4b-2a41-4e01-8e89-d2cd99873054">
 
-```
 
 ## Manual test
 
