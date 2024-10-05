@@ -1,16 +1,16 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { uuid } from 'uuidv4';
 
-import { ClaimRepositoryPort } from 'src/claim/domain/ports/out/claim.repository.port';
+import { ClaimRepositoryPort } from '@claim/domain/ports/out/claim.repository.port';
 
 import { Claim } from '../domain/claim.model';
 import {
   ClaimDTO,
-  ClaimServicePort,
+  @guardsPort,
 } from '../domain/ports/in/claim.service.port';
 
 @Injectable()
-export class ClaimService implements ClaimServicePort {
+export class @guards implements @guardsPort {
   constructor(
     @Inject('ClaimRepositoryPort')
     private readonly claimRepository: ClaimRepositoryPort,

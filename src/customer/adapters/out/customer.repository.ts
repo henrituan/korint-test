@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/infra/database/prisma.service';
+import { PrismaService } from '@infra/database/prisma.service';
 
-import { CustomerRepositoryPort } from 'src/customer/domain/ports/out/customer.repository.port';
-import { Customer } from 'src/customer/domain/customer.model';
+import { CustomerRepositoryPort } from '@customer/domain/ports/out/customer.repository.port';
+import { Customer } from '@customer/domain/customer.model';
 
 @Injectable()
 export class CustomerRepository implements CustomerRepositoryPort {

@@ -1,9 +1,15 @@
 {
   "moduleFileExtensions": ["js", "json", "ts"],
-  "rootDir": ".",
+  "rootDir": "../",
   "testEnvironment": "node",
-  "testRegex": ".e2e-spec.ts$",
+  "testRegex": ".e2e.spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@guards/(.*)": "<rootDir>/src/guards/$1",
+    "@infra/(.*)": "<rootDir>/src/infra/$1",
+    "@customer/(.*)": "<rootDir>/src/customer/$1",
+    "@claim/(.*)": "<rootDir>/src/claim/$1"
   }
 }

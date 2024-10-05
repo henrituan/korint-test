@@ -1,4 +1,4 @@
-import { Customer } from 'src/customer/domain/customer.model';
+import { Customer } from '@customer/domain/customer.model';
 import { Claim } from '../../claim.model';
 
 export interface ClaimRepositoryPort {

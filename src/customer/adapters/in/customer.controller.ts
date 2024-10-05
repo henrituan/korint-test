@@ -6,13 +6,15 @@ import {
   Param,
   Inject,
   UseGuards,
+  NotFoundException,
+  ValidationPipe,
 } from '@nestjs/common';
-import { PartneryKeyGuard } from 'src/guards/partner-key-guard';
+import { PartneryKeyGuard } from '@guards/partner-key-guard';
 
 import {
-  CustomerDTO,
+  CustomerRequestDto,
   CustomerServicePort,
-} from 'src/customer/domain/ports/in/customer.service.port';
+} from '@customer/domain/ports/in/customer.service.port';
 
 @Controller('customers')
 @UseGuards(PartneryKeyGuard)
@@ -23,7 +25,10 @@ export class CustomerController {
   ) {}
 
   @Post()
-  async createCustomer(@Body() data: { input: CustomerDTO }) {
+  async createCustomer(
+    @Body(new ValidationPipe({ transform: true }))
+    data: CustomerRequestDto,
+  ) {
     const customer = await this.customerService.createCustomer(data.input);
 
     return {
@@ -35,6 +40,11 @@ export class CustomerController {
 
   @Get(':id')
   async getCustomer(@Param('id') id: string) {
-    return this.customerService.getCustomerById(id);
+    const customer = await this.customerService.getCustomerById(id);
+    if (!customer) {
+      throw new NotFoundException('Customer not found');
+    }
+
+    return customer;
   }
 }

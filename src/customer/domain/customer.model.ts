@@ -1,4 +1,4 @@
-import { Claim } from 'src/claim/domain/claim.model';
+import { Claim } from '@claim/domain/claim.model';
 
 export class Customer {
   constructor(

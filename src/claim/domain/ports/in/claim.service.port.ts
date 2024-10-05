@@ -7,7 +7,7 @@ export class ClaimDTO {
   pointValue: number;
 }
 
-export interface ClaimServicePort {
+export interface @guardsPort {
   // todo: return a more explicit response (eg: how many failed, how many succeeded, failure reasons)
   createClaims(input: ClaimDTO[]): Promise<number>;
   getClaimsByCustomerId(customerId: Claim['customerId']): Promise<Claim[]>;
