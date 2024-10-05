@@ -1,6 +1,18 @@
 ## Demo
 https://www.loom.com/share/fb3ae38deddc4049b1670cc6b851ba5b
 
+## Features
+- POST /customers
+- GET /customers/:id
+- POST /claims (batch claims creation)
+- Simple Auth
+
+## .Env
+```bash
+DATABASE_URL = "postgresql://postgres:postgres@localhost:5000/korint?schema=public"
+PARTNER_KEY = partner_key_test
+```
+
 ## To run project
 
 ```bash
@@ -16,19 +28,12 @@ Postgres DB is available at port 5000
 ```bash
 # unit tests
 $ npm run test
+<img width="466" alt="image" src="https://github.com/user-attachments/assets/0a76ca73-944e-47a5-b2c7-f4a48ab8c15f">
 
 # e2e tests
 $ npm run test:e2e
+<img width="409" alt="image" src="https://github.com/user-attachments/assets/323cdc4b-2a41-4e01-8e89-d2cd99873054">
 
-# test coverage
-$ npm run test:cov
-```
-
-## .Env for testing
-
-```bash
-DATABASE_URL = "postgresql://postgres:postgres@localhost:5000/korint?schema=public"
-PARTNER_KEY = partner_key_test
 ```
 
 ## Manual test
